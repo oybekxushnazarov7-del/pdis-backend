@@ -1,10 +1,6 @@
-import pyodbc
+import sqlite3
 
 def get_connection():
-    conn = pyodbc.connect(
-        "DRIVER={SQL Server};"
-        "SERVER=.\\SQLEXPRESS;"
-        "DATABASE=PDIS;"
-        "Trusted_Connection=yes;"
-    )
-    return conn 
+    conn = sqlite3.connect("pdis.db")
+    conn.row_factory = sqlite3.Row
+    return conn
